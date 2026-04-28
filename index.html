@@ -1,8 +1,796 @@
 <!DOCTYPE html>
-<html>
+<html class="fontawesome-i2svg-active fontawesome-i2svg-complete">
+
 <head>
-  <title>[WIP]</title>
+    <meta charset="utf-8">
+    <meta name="description" content="A LoD of Gaussians:  Unified Training and Rendering for Ultra-Large Scale Reconstruction with External Memory">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>A LoD of Gaussians:  Unified Training and Rendering for Ultra-Large Scale Reconstruction with External Memory</title>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+
+    <link rel="stylesheet" href="test/dics.css">
+    <script src="test/dics.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
 </head>
+
 <body>
+
+
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+
+                    <div class="column has-text-centered">
+                        <h1 class="title is-1 publication-title" style="margin: 3px; padding: 2px;"><span
+                                style="font-weight: bold; margin: 0px;">A LoD of Gaussians:</span><span
+                                style="font-weight: lighter; margin: 0px;"> Out-of-Core Training and Rendering for Seamless Ultra-Large Scene Reconstruction</span>
+                        </h1>
+                        <h2 class="title is-3 publication-title"
+                            style="font-weight: 100; margin: 9px; padding: 2px; color: darkslategray;">
+                            SIGGRAPH 2026 &emsp; 
+                        </h2>
+
+                        <div class="column has-text-centered">
+                            <div class="publication-links">
+                                <!-- TODO: Add supplementary material link -->
+                                <span class="link-block">
+                                    <a href="https://arxiv.org/pdf/2507.01110"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-file-pdf"></i>
+                                        </span>
+                                        <span>Paper</span>
+                                    </a>
+                                </span>
+                                <span class="link-block">
+                                    <a href="https://youtu.be/5mRpZGSqoyg"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <svg class="svg-inline--fa fa-youtube fa-w-18" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="youtube" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"></path></svg>
+                                        </span>
+                                        <span>Video</span>
+                                    </a>
+                                </span>
+                                <span class="link-block">
+                                    <a href=""
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <svg class="svg-inline--fa fa-github fa-w-16" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" data-fa-i2svg=""><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>                                        </span>
+                                        <span>Code (Coming Soon)</span>
+                                    </a>
+                                </span>
+                                <span class="link-block">
+                                    <a href="https://huggingface.co/datasets/mattia-durso/Uni10K"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face" style="width: 1em; height: 1em;">                                        <span>Uni10k Dataset</span>
+                                    <span>Uni10k dataset</span>
+                                        </a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop height="100%">
+        <source src="./video/MC-small-city+_overview.mp4"
+                type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        <strong>A LoD of Gaussians</strong> enables training and rendering of massive city-scale scenes with up to 150 Million Gaussians on consumer GPUs.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            Gaussian Splatting has emerged as a high-performance technique for novel
+view synthesis, enabling real-time rendering and high-quality reconstruction
+of small scenes. However, scaling to larger environments has so far relied
+on partitioning the scene into chunks—a strategy that introduces artifacts at
+chunk boundaries, complicates training across varying scales, and is poorly
+suited to unstructured scenarios such as city-scale flyovers combined with
+street-level views. Moreover, rendering remains fundamentally limited by
+GPU memory, as all visible chunks must reside in VRAM simultaneously.
+We introduce A LoD of Gaussians, a framework for training and rendering
+ultra-large-scale Gaussian scenes on a single consumer-grade GPU—without
+partitioning. Our method stores the full scene out-of-core (e.g., in CPU mem-
+ory) and trains a Level-of-Detail (LoD) representation directly, dynamically
+streaming only the relevant Gaussians. A hybrid data structure combining
+Gaussian hierarchies with Sequential Point Trees enables efficient, view-
+dependent LoD selection, while a lightweight caching and view scheduling
+system exploits temporal coherence to support real-time streaming and
+rendering. Together, these innovations enable seamless multi-scale recon-
+struction and interactive visualization of complex scenes—from broad aerial
+views to fine-grained ground-level details.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column is-full-width">
+                    <h2 class="title is-3">Training Ultra-Large Scale Scenes</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        <div class="hero-body" style="margin: 0px; padding: 0px;">
+            <div class="columns is-vcentered is-multiline">
+                <div class="column is-half">
+                    <div>
+                        <video autoplay muted loop playsinline>
+                            <source src="./video/LOD_Visualization.mp4" type="video/mp4">
+                        </video>
+                        <h2 class="subtitle has-text-centered mt-3">
+                            <strong>Smooth Level of Detail Transitions</strong>
+                        </h2>
+                        <p class="has-text-justified">
+                            Supported by a robust coarse-to-fine densification strategy, we are the first approach to train the entire scene directly on the LoD representation. A smooth Gaussian Hierarchy in combination with Sequential Point Trees allows us to find the right level of detail at blazing speeds.  
+                        </p>
+                    </div>
+                </div>
+                <div class="column is-half">
+                    <div>
+                        <video autoplay muted loop playsinline>
+                            <source src="./video/MC-small-city+_overview.mp4" type="video/mp4">
+                        </video>
+                        <h2 class="subtitle has-text-centered mt-3">
+                            <strong>Visibility Culling</strong>
+                        </h2>
+                        <p class="has-text-justified">
+                            In addition to level of detail, visibility culling reduces memory demand during training by efficiently streaming new content to the GPU.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-desktop">
+        <div class="columns is-centered">
+            <div class="column is-full-width">
+                <h2 class="title is-3">Results for Ultra-Large Scale Reconstruction</h2>
+                <div class="content has-text-justified">
+
+                </div>
+            </div>
+        </div>
+    <div class="hero-body" style="margin: 0px; padding: 0px;">
+        <div class="columns is-vcentered is-multiline">
+            <div class="column is-half">
+                <div>
+                    <video autoplay muted loop playsinline>
+                        <source src="./video/small_city.mp4" type="video/mp4">
+                    </video>
+                    <h2 class="subtitle has-text-centered mt-3">
+                        <strong>Small City, ~ 5.8K Images</strong>
+                    </h2>
+                </div>
+            </div>
+            <div class="column is-half">
+                <div>
+                    <video autoplay muted loop playsinline>
+                        <source src="./video/Uni10k.mp4" type="video/mp4">
+                    </video>
+                    <h2 class="subtitle has-text-centered mt-3">
+                        <strong>Uni10k, ~ 10K Images</strong>
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<section class="section">
+    <div class="container is-max-desktop">
+        <div class="columns is-centered">
+            <div class="column is-full-width">
+                <h2 class="title is-3">Real-Time Rendering</h2>
+                <div class="content has-text-justified">
+                    <p>
+                        The combination of all these techniques allows us to render giant scenes on modest hardware - at interactive framerates.
+                    </p>
+                </div>
+            </div>
+        </div>
+    <div class="hero-body" style="margin: 0px; padding: 0px;">
+        <div class="columns is-vcentered is-multiline">
+            <div class="column is-half">
+                <div>
+                    <video autoplay muted loop playsinline>
+                        <source src="./video/RealTime1.mkv" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="column is-half">
+                <div>
+                    <video autoplay muted loop playsinline>
+                        <source src="./video/RealTime2.mkv" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+
+            <!-- More Results. -->
+            <div class="columns is-centered">
+                <div class="column is-full-width">
+
+                    <h2 class="title is-3">Results</h2>
+                    <div class="content has-text-justified">
+                        <p>We provide further qualitative comparisons with related work here. Click on the toggle button to expand the comparison gallery.</p>
+                    </div>
+                </div>
+            </div>
+
+<!-- #region CityGS Comparisons -->
+            <details style="margin: 0px; padding: 0px;">
+                <summary class="has-text-weight-semibold is-size-5">
+                    Ours vs. CityGS (click to expand)
+                </summary>
+                <div class="mt-5">
+                    <div class="content has-text-justified">
+                        <p>CityGS is mainly optimized for aerial datasets, resulting in blurry reconstructions when other perspectives are introduced.</p>
+                    </div>
+                    <div class="columns is-centered">
+                        <div class="column">
+                            <div class="content">
+                                <div class="columns is-centered">
+                                    <div class="column is-full-width">
+                                        <div class="b-dics">
+                                            <img src="static/images/Udine_Images/Ours/DJI_0068_frame_000001.jpg_21.22177505493164.png" alt="Ours">
+                                            <img src="static/images/Udine_Images/CityGS/DJI_0068_frame_00000100000.png" alt="CityGS">
+                                            <img src="static/images/Udine_Images/gt/00000.png" alt="Ground Truth">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="content">
+                                <div class="columns is-centered">
+                                    <div class="column is-full-width">
+                                        <div class="b-dics">
+                                            <img src="static/images/Udine_Images/Ours/DJI_0152_frame_001773.jpg_21.325103759765625.png" alt="Ours">
+                                            <img src="static/images/Udine_Images/CityGS/DJI_0152_frame_00177301257.png" alt="CityGS">
+                                            <img src="static/images/Udine_Images/gt/01257.png" alt="Ground Truth">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="columns is-centered">
+                        <div class="column">
+                            <div class="content">
+                                <div class="columns is-centered">
+                                    <div class="column is-full-width">
+                                        <div class="b-dics">
+                                            <img src="static/images/HUGECITY_COMPARISON/Ours_HUGE/eval4207.png" alt="Ours">
+                                            <img src="static/images/HUGECITY_COMPARISON/CityGS/04206.png" alt="CityGS">
+                                            <img src="static/images/HUGECITY_COMPARISON/gt/04206.png" alt="Ground Truth">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="content">
+                                <div class="columns is-centered">
+                                    <div class="column is-full-width">
+                                        <div class="b-dics">
+                                            <img src="static/images/HUGECITY_COMPARISON/Ours_HUGE/eval4034.png" alt="Ours">
+                                            <img src="static/images/HUGECITY_COMPARISON/CityGS/04033.png" alt="CityGS">
+                                            <img src="static/images/HUGECITY_COMPARISON/gt/04033.png" alt="Ground Truth">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="columns is-centered">
+                        <div class="column">
+                            <div class="content">
+                                <div class="columns is-centered">
+                                    <div class="column is-full-width">
+                                        <div class="b-dics">
+                                            <img src="static/images/HUGECITY_COMPARISON/Ours_HUGE/eval65.png" alt="Ours">
+                                            <img src="static/images/HUGECITY_COMPARISON/CityGS/00064.png" alt="CityGS">
+                                            <img src="static/images/HUGECITY_COMPARISON/gt/00064.png" alt="Ground Truth">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="content">
+                                <div class="columns is-centered">
+                                    <div class="column is-full-width">
+                                        <div class="b-dics">
+                                            <img src="static/images/HUGECITY_COMPARISON/Ours_HUGE/eval22.png" alt="Ours">
+                                            <img src="static/images/HUGECITY_COMPARISON/CityGS/00021.png" alt="CityGS">
+                                            <img src="static/images/HUGECITY_COMPARISON/gt/00021.png" alt="Ground Truth">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="columns is-centered">
+                        <div class="column">
+                            <div class="content">
+                                <div class="columns is-centered">
+                                    <div class="column is-full-width">
+                                        <div class="b-dics">
+                                            <img src="static/images/CampusComparison/Ours_new/evalback_G0039332.jpg2.png" alt="Ours">
+                                            <img src="static/images/CampusComparison/New_City_on_campus/back_G003933200001.png" alt="CityGS">
+                                            <img src="static/images/CampusComparison/GT/evalback_G0039332.jpg2_gt.png" alt="Ground Truth">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="content">
+                                <div class="columns is-centered">
+                                    <div class="column is-full-width">
+                                        <div class="b-dics">
+                                            <img src="static/images/CampusComparison/Ours_new/evalback_G0039432.jpg3.png" alt="Ours">
+                                            <img src="static/images/CampusComparison/New_City_on_campus/back_G003943200025.png" alt="CityGS">
+                                            <img src="static/images/CampusComparison/GT/evalback_G0039432.jpg3_gt.png" alt="Ground Truth">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </details>
+<!-- #endregion -->
+
+<!-- #region CLM Comparisons -->
+            <details style="margin: 0px; margin-top: 10px; padding: 0px;">
+                <summary class="has-text-weight-semibold is-size-5">
+                    Ours vs. CLM (click to expand)
+                </summary>
+                <div class="mt-5">
+                    <div class="content has-text-justified">
+                        <p>CLM trains the entire scene using unified memory management, but does not adequately adapt the training process to enable ultra-large-scale reconstruction. </p>
+                    </div>
+                    <div class="columns is-centered">
+                        <div class="column">
+                            <div class="content">
+                                <div class="columns is-centered">
+                                    <div class="column is-full-width">
+                                        <div class="b-dics">
+                                            <img src="static/images/Udine_Images/Ours/DJI_0068_frame_000001.jpg_21.22177505493164.png" alt="Ours">
+                                            <img src="static/images/Udine_Images/CLM/frame_00000.png" alt="CLM">
+                                            <img src="static/images/Udine_Images/gt/00000.png" alt="Ground Truth">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="content">
+                                <div class="columns is-centered">
+                                    <div class="column is-full-width">
+                                        <div class="b-dics">
+                                            <img src="static/images/Udine_Images/Ours/DJI_0152_frame_001773.jpg_21.325103759765625.png" alt="Ours">
+                                            <img src="static/images/Udine_Images/CLM/frame_01257.png" alt="CLM">
+                                            <img src="static/images/Udine_Images/gt/01257.png" alt="Ground Truth">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="columns is-centered">
+                        <div class="column">
+                            <div class="content">
+                                <div class="columns is-centered">
+                                    <div class="column is-full-width">
+                                        <div class="b-dics">
+                                            <img src="static/images/HUGECITY_COMPARISON/Ours_HUGE/eval4207.png" alt="Ours">
+                                            <img src="static/images/New_CLM_HUGECITY/04206.png" alt="CLM">
+                                            <img src="static/images/HUGECITY_COMPARISON/gt/04206.png" alt="Ground Truth">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="content">
+                                <div class="columns is-centered">
+                                    <div class="column is-full-width">
+                                        <div class="b-dics">
+                                            <img src="static/images/HUGECITY_COMPARISON/Ours_HUGE/eval4034.png" alt="Ours">
+                                            <img src="static/images/New_CLM_HUGECITY/04033.png" alt="CLM">
+                                            <img src="static/images/HUGECITY_COMPARISON/gt/04033.png" alt="Ground Truth">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="columns is-centered">
+                        <div class="column">
+                            <div class="content">
+                                <div class="columns is-centered">
+                                    <div class="column is-full-width">
+                                        <div class="b-dics">
+                                            <img src="static/images/HUGECITY_COMPARISON/Ours_HUGE/eval65.png" alt="Ours">
+                                            <img src="static/images/New_CLM_HUGECITY/00064.png" alt="CLM">
+                                            <img src="static/images/HUGECITY_COMPARISON/gt/00064.png" alt="Ground Truth">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="content">
+                                <div class="columns is-centered">
+                                    <div class="column is-full-width">
+                                        <div class="b-dics">
+                                            <img src="static/images/HUGECITY_COMPARISON/Ours_HUGE/eval22.png" alt="Ours">
+                                            <img src="static/images/New_CLM_HUGECITY/00021.png" alt="CLM">
+                                            <img src="static/images/HUGECITY_COMPARISON/gt/00021.png" alt="Ground Truth">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </details>
+<!-- #endregion -->
+
+<!-- #region H3DGS Comparisons -->
+            <details style="margin: 0px; margin-top: 10px; padding: 0px;">
+                <summary class="has-text-weight-semibold is-size-5">
+                    Ours vs. Hierarchical-3DGS (click to expand)
+                </summary>
+                <div class="mt-5">
+                    <div class="content has-text-justified">
+                        <p>Hierarchical-3DGS suffers from chunking artifacts such as bleeding and ghosting when views at multiple scales are introduced.</p>
+                    </div>
+                    <div class="columns is-centered">
+                        <div class="column">
+                            <div class="content">
+                                <div class="columns is-centered">
+                                    <div class="column is-full-width">
+                                        <div class="b-dics">
+                                            <img src="static/images/HUGECITY_COMPARISON/Ours_HUGE/eval149.png" alt="Ours">
+                                            <img src="static/images/Hierarchical/aerial_1_test_0008tensor(19.0512, device='cuda:0', dtype=torch.float64).png" alt="H3DGS">
+                                            <img src="static/images/HUGECITY_COMPARISON/gt/00148.png" alt="Ground Truth">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="content">
+                                <div class="columns is-centered">
+                                    <div class="column is-full-width">
+                                        <div class="b-dics">
+                                            <img src="static/images/HUGECITY_COMPARISON/Ours_HUGE/eval181.png" alt="Ours">
+                                            <img src="static/images/Hierarchical/aerial_1_test_0040tensor(17.1491, device='cuda:0', dtype=torch.float64).png" alt="H3DGS">
+                                            <img src="static/images/HUGECITY_COMPARISON/gt/00180.png" alt="Ground Truth">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="columns is-centered">
+                        <div class="column">
+                            <div class="content">
+                                <div class="columns is-centered">
+                                    <div class="column is-full-width">
+                                        <div class="b-dics">
+                                            <img src="static/images/CampusComparison/Ours_new/evalback_G0039232.jpg1.png" alt="Ours">
+                                            <img src="static/images/CampusComparison/Hierarchical_New/back/back_G0039232tensor(20.7812, device='cuda:0', dtype=torch.float64).png" alt="H3DGS">
+                                            <img src="static/images/CampusComparison/GT/evalback_G0039232.jpg1_gt.png" alt="Ground Truth">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="content">
+                                <div class="columns is-centered">
+                                    <div class="column is-full-width">
+                                        <div class="b-dics">
+                                            <img src="static/images/CampusComparison/Ours_new/evaltop_G0038721.jpg191.png" alt="Ours">
+                                            <img src="static/images/CampusComparison/Hierarchical_New/top/top_G0038721.png" alt="H3DGS">
+                                            <img src="static/images/CampusComparison/GT/evaltop_G0038721.jpg191_gt.png" alt="Ground Truth">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="columns is-centered">
+                        <div class="column">
+                            <div class="content">
+                                <div class="columns is-centered">
+                                    <div class="column is-full-width">
+                                        <div class="b-dics">
+                                            <img src="static/images/CampusComparison/Ours_new/evalleft_G0077571.jpg101.png" alt="Ours">
+                                            <img src="static/images/CampusComparison/Hierarchical_New/left/left_G0077571.png" alt="H3DGS">
+                                            <img src="static/images/CampusComparison/GT/evalleft_G0077571.jpg101_gt.png" alt="Ground Truth">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="content">
+                                <div class="columns is-centered">
+                                    <div class="column is-full-width">
+                                        <div class="b-dics">
+                                            <img src="static/images/CampusComparison/Ours_new/evalfront_G0034613.jpg57.png" alt="Ours">
+                                            <img src="static/images/CampusComparison/Hierarchical_New/front/front_G0034613.png" alt="H3DGS">
+                                            <img src="static/images/CampusComparison/GT/evalfront_G0034613.jpg57_gt.png" alt="Ground Truth">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </details>
+<!-- #endregion -->
+
+<!-- #region HorizonGS Comparisons -->
+<details style="margin: 0px; margin-top: 10px; padding: 0px;">
+    <summary class="has-text-weight-semibold is-size-5">
+        Ours vs. HorizonGS (click to expand)
+    </summary>
+    <div class="mt-5">
+        <div class="content has-text-justified">
+            <p>While HorizonGS is designed for training at different scales, it fails to adequately address the challenges of ultra-large-scale reconstruction.</p>
+        </div>
+        <div class="columns is-centered">
+            <div class="column">
+                <div class="content">
+                    <div class="columns is-centered">
+                        <div class="column is-full-width">
+                            <div class="b-dics">
+                                <img src="static/images/HUGECITY_COMPARISON/Ours_HUGE/eval181.png" alt="Ours">
+                                <img src="static/images/HorizonHUGECITY_aerial/00179.png" alt="HorizonGS">
+                                <img src="static/images/HUGECITY_COMPARISON/gt/00180.png" alt="Ground Truth">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="content">
+                    <div class="columns is-centered">
+                        <div class="column is-full-width">
+                            <div class="b-dics">
+                                <img src="static/images/HUGECITY_COMPARISON/Ours_HUGE/eval201.png" alt="Ours">
+                                <img src="static/images/HorizonHUGECITY_aerial/00199.png" alt="HorizonGS">
+                                <img src="static/images/HUGECITY_COMPARISON/gt/00200.png" alt="Ground Truth">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="columns is-centered">
+            <div class="column">
+                <div class="content">
+                    <div class="columns is-centered">
+                        <div class="column is-full-width">
+                            <div class="b-dics">
+                                <img src="static/images/HUGECITY_COMPARISON/Ours_HUGE/eval4199.png" alt="Ours">
+                                <img src="static/images/HorizonHUGECITY_Street/street_4_test_0685.png" alt="HorizonGS">
+                                <img src="static/images/HUGECITY_COMPARISON/gt/04198.png" alt="Ground Truth">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="content">
+                    <div class="columns is-centered">
+                        <div class="column is-full-width">
+                            <div class="b-dics">
+                                <img src="static/images/HUGECITY_COMPARISON/Ours_HUGE/eval4211.png" alt="Ours">
+                                <img src="static/images/HorizonHUGECITY_Street/street_4_test_0697.png" alt="HorizonGS">
+                                <img src="static/images/HUGECITY_COMPARISON/gt/04210.png" alt="Ground Truth">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="columns is-centered">
+            <div class="column">
+                <div class="content">
+                    <div class="columns is-centered">
+                        <div class="column is-full-width">
+                            <div class="b-dics">
+                                <img src="static/images/Udine_Images/Ours/DJI_0068_frame_002369.jpg_19.72119140625.png" alt="Ours">
+                                <img src="static/images/aerial/renders/00037.png" alt="HorizonGS">
+                                <img src="static/images/Udine_Images/gt/00037.png" alt="Ground Truth">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="content">
+                    <div class="columns is-centered">
+                        <div class="column is-full-width">
+                            <div class="b-dics">
+                                <img src="static/images/Udine_Images/Ours/DJI_0068_frame_002881.jpg_20.393585205078125.png" alt="Ours">
+                                <img src="static/images/aerial/renders/00045.png" alt="HorizonGS">
+                                <img src="static/images/Udine_Images/gt/00045.png" alt="Ground Truth">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="columns is-centered">
+            <div class="column">
+                <div class="content">
+                    <div class="columns is-centered">
+                        <div class="column is-full-width">
+                            <div class="b-dics">
+                                <img src="static/images/Udine_Images/Ours/DJI_0073_frame_000041.jpg_20.919588088989258.png" alt="Ours">
+                                <img src="static/images/aerial/renders/00148.png" alt="HorizonGS">
+                                <img src="static/images/Udine_Images/gt/00148.png" alt="Ground Truth">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="content">
+                    <div class="columns is-centered">
+                        <div class="column is-full-width">
+                            <div class="b-dics">
+                                <img src="static/images/Udine_Images/Ours/DJI_0069_frame_002199.jpg_21.237022399902344.png" alt="Ours">
+                                <img src="static/images/aerial/renders/00080.png" alt="HorizonGS">
+                                <img src="static/images/Udine_Images/gt/00080.png" alt="Ground Truth">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</details>
+<!-- #endregion -->
+
+<!-- #region OctreeGS Comparisons -->
+<details style="margin: 0px; margin-top: 10px; padding: 0px;">
+    <summary class="has-text-weight-semibold is-size-5">
+        Ours vs. OctreeGS (click to expand)
+    </summary>
+    <div class="mt-5">
+        <div class="content has-text-justified">
+            <p>Despite providing an LoD system, OctreeGS is unable to synthesize high-fidelity details on large-scale scenes.</p>
+        </div>
+        <div class="columns is-centered">
+            <div class="column">
+                <div class="content">
+                    <div class="columns is-centered">
+                        <div class="column is-full-width">
+                            <div class="b-dics">
+                                <img src="static/images/Udine_Images/Ours/DJI_0068_frame_002369.jpg_19.72119140625.png" alt="Ours">
+                                <img src="static/images/Udine_Images/OctreeGs/00037.png" alt="OctreeGS">
+                                <img src="static/images/Udine_Images/gt/00037.png" alt="Ground Truth">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="content">
+                    <div class="columns is-centered">
+                        <div class="column is-full-width">
+                            <div class="b-dics">
+                                <img src="static/images/Udine_Images/Ours/DJI_0069_frame_001687.jpg_21.047374725341797.png" alt="Ours">
+                                <img src="static/images/Udine_Images/OctreeGs/00072.png" alt="OctreeGS">
+                                <img src="static/images/Udine_Images/gt/00072.png" alt="Ground Truth">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="columns is-centered">
+            <div class="column">
+                <div class="content">
+                    <div class="columns is-centered">
+                        <div class="column is-full-width">
+                            <div class="b-dics">
+                                <img src="static/images/Udine_Images/Ours/DJI_0073_frame_000041.jpg_20.919588088989258.png" alt="Ours">
+                                <img src="static/images/Udine_Images/OctreeGs/00148.png" alt="OctreeGS">
+                                <img src="static/images/Udine_Images/gt/00148.png" alt="Ground Truth">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="content">
+                    <div class="columns is-centered">
+                        <div class="column is-full-width">
+                            <div class="b-dics">
+                                <img src="static/images/Udine_Images/Ours/DJI_0069_frame_002199.jpg_21.237022399902344.png" alt="Ours">
+                                <img src="static/images/Udine_Images/OctreeGs/00080.png" alt="OctreeGS">
+                                <img src="static/images/Udine_Images/gt/00080.png" alt="Ground Truth">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</details>
+<!-- #endregion -->
+
+        </div>
+    </section>
+
 </body>
+
 </html>
