@@ -47,6 +47,31 @@
                             style="font-weight: 100; margin: 9px; padding: 2px; color: darkslategray;">
                             SIGGRAPH 2026 &emsp; 
                         </h2>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block"><a href="https://felixwindisch.github.io/">Felix Windisch</a><sup>
+                                    1</sup></span> &emsp;
+                            <span class="author-block"><a href="https://at.linkedin.com/in/thomas-k%C3%B6hler">Thomas Köhler</a><sup>
+                                    1</sup></span> &emsp;
+                            <span class="author-block"><a href="https://r4dl.github.io">Lukas Radl</a><sup>
+                                    1</sup></span> &emsp;
+                            <span class="author-block"><a
+                                    href="https://steimich96.github.io/">Michael
+                                    Steiner</a><sup> 1</sup></span> &emsp;
+                            <span class="author-block"><a href="https://schmalstieg.github.io/">Dieter Schmalstieg</a>
+                                <sup>1,3</sup></span> &emsp;
+                            <span class="author-block"><a href="https://www.markussteinberger.net/">Markus
+                                    Steinberger</a> <sup>1,2</sup></span>
+                        </div>
+
+
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block"><sup>1</sup> Graz University of Technology</span> &emsp;
+                            <span class="author-block"><sup>2</sup> Huawei Technologies</span> &emsp;
+                            <span class="author-block"><sup>3</sup> University of Stuttgart</span>
+                        </div>
+
+                   
+
 
                         <div class="column has-text-centered">
                             <div class="publication-links">
@@ -78,13 +103,15 @@
                                     </a>
                                 </span>
                                 <span class="link-block">
-                                    <a href="https://huggingface.co/datasets/mattia-durso/Uni10K"
-                                        class="external-link button is-normal is-rounded is-dark">
-                                        <span class="icon">
-                                            <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face" style="width: 1em; height: 1em;">                                        <span>Uni10k Dataset</span>
-                                    <span>Uni10k dataset</span>
-                                        </a>
-                                </span>
+    <a href="https://huggingface.co/datasets/mattia-durso/Uni10K"
+        class="external-link button is-normal is-rounded is-dark">
+        <span class="icon">
+            <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" 
+                 alt="Hugging Face" 
+                 style="width: 1em; height: 1em; filter: brightness(0) invert(1);"> </span>
+        <span>Uni10k Dataset</span>
+    </a>
+</span>
                             </div>
                         </div>
                     </div>
@@ -135,6 +162,15 @@ system exploits temporal coherence to support real-time streaming and
 rendering. Together, these innovations enable seamless multi-scale recon-
 struction and interactive visualization of complex scenes—from broad aerial
 views to fine-grained ground-level details.
+                    </div>
+                </div>
+            </div>
+            <!--/ Video. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Video</h2>
+                    <div class="publication-video">
+                        <iframe width="1455" height="818" src="https://www.youtube.com/embed/5mRpZGSqoyg" title="[SIGGRAPH 2026] A LoD of Gaussians: Ultra-Large Out-of-Core Training and Rendering for 3DGS" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
@@ -790,7 +826,45 @@ views to fine-grained ground-level details.
 
         </div>
     </section>
-
+<section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+            <h2 class="title">BibTeX</h2>
+            <div class="content has-text-justified">
+                <p>
+                    If you find our work useful, consider using a citation.
+                </p>
+            </div>
+            <pre><code id="citation_text">@inproceedings{windisch2026ALoDOfGaussians,
+  author    = {Windisch, Felix and K{\"o}hler, Thomas and Radl, Lukas and D'Urso, Mattia and Steiner, Michael and Schmalstieg, Dieter and Steinberger, Markus},
+  title     = {{A LoD of Gaussians: Unified Training and Rendering for Ultra-Large-Scale Reconstruction with External Memory}},
+  booktitle = {Proceedings of ACM SIGGRAPH 2026},
+  series    = {SIGGRAPH '26},
+  year      = {2026},
+  location  = {Los Angeles, CA, USA},
+  publisher = {ACM},
+  address   = {New York, NY, USA},
+  numpages  = {9},
+  doi       = {10.1145/3799902.3811076}
+}</code></pre>
+            <clipboard-copy aria-label="Copy"
+                class="clipcopy ClipboardButton btn btn-invisible js-clipboard-copy m-2 p-0 tooltipped-no-delay d-flex flex-justify-center flex-items-center"
+                data-copy-feedback="Copied!" data-tooltip-direction="w" value="" tabindex="0" role="button"
+                onclick="copytoclip()" id="clip-copy" style="position: absolute; top: 110px; right: 10px;">
+                <svg id='svg_cp' aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16"
+                    data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon">
+                    <path id='clipboard1'
+                        d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z">
+                    </path>
+                    <path id='clipboard2'
+                        d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z">
+                    </path>
+                    <path id='checkbox1' class="is-hidden"
+                        d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z">
+                    </path>
+                </svg>
+            </clipboard-copy>
+        </div>
+    </section>
 </body>
 
 </html>
